@@ -17,7 +17,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atorres6d5/unit-60-api.git"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atorres6d5/unit-60-api/issues"
+  },
+  "homepage": "https://github.com/atorres6d5/unit-60-api#readme"
 }
