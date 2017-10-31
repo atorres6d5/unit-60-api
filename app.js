@@ -8,12 +8,13 @@ const routes = require('./routes/routes.js')
 
 
 app.use(bodyParser.json())
-
+app.use(morgan('dev'))
 
 
 app.use('/books', routes)
 
 app.use((err, req, res, next) =>{
+  console.log(err)
   const status = err.status || 500
   res.status(status).json({error: err})
 })

@@ -4,7 +4,9 @@ const ctrl = require('../ctrl/ctrl.js')
 
 
 router.get('/', ctrl.getAll)
+router.get('/:id', ctrl.getOne)
 router.post('/', ctrl.makeBook)
+router.put('/:id/Description', ctrl.update)
 
 
 

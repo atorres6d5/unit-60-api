@@ -5,6 +5,11 @@ function getAll(req, res, next){
   return res.status(200).send({ data: model.books})
 }
 
+function getOne(req, res, next){
+  let onebook = model.getOne(req.params.id)
+  return res.status(200).send({data:onebook})
+}
+
 function makeBook(req, res, next){
   let body = req.body
   if(!body.title || !body.first || !body.last){
@@ -14,9 +19,21 @@ function makeBook(req, res, next){
   return res.status(200).send({data:thisBook})
 }
 
+function update(req, res, next){
+  let id = req.params.id
+  let Description = req.body.info
+
+  if(!id) return next({status: 400, message:"please provide us with an id to look for"})
+  //console.log(Description);
+  let relevant = model.upDate(id, Description)
+   console.log(relevant);
+  if(!relevant) return next({status:404, message: "no book found with that name"})
+  return res.status(200).send({data: relevant})
+}
 
 
 
 
 
-module.exports = {getAll, makeBook}
+
+module.exports = {getAll, getOne, makeBook, update}
