@@ -42,15 +42,27 @@ function newBook(title, first, last){
 
 function upDate(id, Description){
   let thisBook = getOne(id)
-  //console.log(thisBook)
   if (thisBook==false) return false
+  let books = JSON.parse(fs.readFileSync(dbpath, format))
+
   let index = books.indexOf(thisBook)
-//  console.log(index);
   thisBook.Description = Description
-  //books.splice(index, 1, thisBook)
+  books.splice(index, 1, thisBook)
+
+  fs.writeFileSync(dbpath, JSON.stringify(books), format)
   return thisBook
 }
 
+function lostBook(id){
+  let allBooks = JSON.parse(fs.readFileSync(dbpath, format))
+  let thisBook = getOne(id)
+  let index = allBooks.indexOf(thisBook)
+  let gone = allBooks.splice(index, 1)
+
+  fs.writeFileSync(dbpath, JSON.stringify(allBooks), format)
+
+  return gone
+}
 
 
-module.exports = { getAll, getOne, newBook, upDate }
+module.exports = { getAll, getOne, newBook, upDate, lostBook }

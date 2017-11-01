@@ -1,13 +1,31 @@
-[
-  { "id": "eaf70dcc-2bd4-4238-ad2e-1869d3817165",
-    "Name":"Nineteen Eighty-Four",
-    "Borrowed": false,
-    "Description": " a dystopian novel published in 1949",
-    "Authors":[
-      {"id": "5c8963b7-3339-48df-b41c-a87a2975e6f3",
-      "First Name":"George",
-      "Last Name": "Orwell"
-      }
-    ]
-  }
-]
+[{
+  "id": "eaf70dcc-2bd4-4238-ad2e-1869d3817165",
+  "Name": "Nineteen Eighty-Four",
+  "Borrowed": false,
+  "Description": " a dystopian novel published in 1949",
+  "Authors": [{
+    "id": "5c8963b7-3339-48df-b41c-a87a2975e6f3",
+    "First Name": "George",
+    "Last Name": "Orwell"
+  }]
+}, {
+  "id": "add754ea-5e47-4093-9987-4b9fcb13fef4",
+  "Name": "Enders Game",
+  "Borrowed": false,
+  "Description": "",
+  "Authors": [{
+    "id": "6349c712-26c2-47e7-a28a-4242153cbe22",
+    "First Name": "Orson",
+    "Last Name": "Scott"
+  }]
+}, {
+  "id": "f63eb478-b7f1-4654-bfe1-450ba79bbdd9",
+  "Name": "Harry Potter",
+  "Borrowed": false,
+  "Description": "",
+  "Authors": [{
+    "id": "f416d756-94d0-4c8a-ab39-665e2c9392c2",
+    "First Name": "jk",
+    "Last Name": "rowling"
+  }]
+}]

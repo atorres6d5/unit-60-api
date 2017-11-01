@@ -25,7 +25,7 @@ function update(req, res, next){
   let id = req.params.id
   let Description = req.body.info
 
-  if(!id) return next({status: 400, message:"please provide us with an id to look for"})
+  if(!id || !Description) return next({status: 400, message:"please provide us with more information"})
   //console.log(Description);
   let relevant = model.upDate(id, Description)
 
@@ -34,9 +34,14 @@ function update(req, res, next){
   return res.status(200).send({data: relevant})
 }
 
+function remove(req, res, next){
+  id = req.params.id
+  if(!id) return next({status: 400, message: "What book do you want to delete?"})
+  let lostBook = model.lostBook(id)
+  return res.status(200).send({data:lostBook})
+}
 
 
 
 
-
-module.exports = {getAll, getOne, makeBook, update}
+module.exports = {getAll, getOne, makeBook, update, remove}

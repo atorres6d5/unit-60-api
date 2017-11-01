@@ -1,1 +1,21 @@
-[{"id":"eaf70dcc-2bd4-4238-ad2e-1869d3817165","Name":"Nineteen Eighty-Four","Borrowed":false,"Description":" a dystopian novel published in 1949","Authors":[{"id":"5c8963b7-3339-48df-b41c-a87a2975e6f3","First Name":"George","Last Name":"Orwell"}]},{"id":"f36233a6-f839-4e33-bbe9-dc86d6da8674","Name":"Enders Game","Borrowed":false,"Description":"","Authors":[{"id":"daa20fc8-c5db-48b7-85ea-08df35d414ef","First Name":"Orson","Last Name":"Scott"}]}]
+[{
+  "id": "eaf70dcc-2bd4-4238-ad2e-1869d3817165",
+  "Name": "Nineteen Eighty-Four",
+  "Borrowed": false,
+  "Description": " a dystopian novel published in 1949",
+  "Authors": [{
+    "id": "5c8963b7-3339-48df-b41c-a87a2975e6f3",
+    "First Name": "George",
+    "Last Name": "Orwell"
+  }]
+}, {
+  "id": "add754ea-5e47-4093-9987-4b9fcb13fef4",
+  "Name": "Enders Game",
+  "Borrowed": false,
+  "Description": "",
+  "Authors": [{
+    "id": "6349c712-26c2-47e7-a28a-4242153cbe22",
+    "First Name": "Orson",
+    "Last Name": "Scott"
+  }]
+}]
