@@ -2,12 +2,14 @@ const model = require('../model/model.js')
 
 
 function getAll(req, res, next){
-  return res.status(200).send({ data: model.books})
+  let collection = model.getAll()
+  //console.log(collection)
+  return res.status(200).send({ data: collection})
 }
 
 function getOne(req, res, next){
   let onebook = model.getOne(req.params.id)
-  return res.status(200).send({data:onebook})
+  return res.status(200).send({data: onebook})
 }
 
 function makeBook(req, res, next){
@@ -26,7 +28,8 @@ function update(req, res, next){
   if(!id) return next({status: 400, message:"please provide us with an id to look for"})
   //console.log(Description);
   let relevant = model.upDate(id, Description)
-   console.log(relevant);
+
+   //console.log(relevant);
   if(!relevant) return next({status:404, message: "no book found with that name"})
   return res.status(200).send({data: relevant})
 }

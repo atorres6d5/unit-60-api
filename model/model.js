@@ -1,20 +1,18 @@
 const uuid = require('uuid/v4')
+const fs = require('fs')
+const dbpath = __dirname+"/../data/database.json"
+const format = "utf-8"
 
-let books = [
-  { "id": "eaf70dcc-2bd4-4238-ad2e-1869d3817165" || uuid(),
-    "Name": 'Nineteen Eighty-Four',
-    "Borrowed": false,
-    "Description": " a dystopian novel published in 1949",
-    "Authors":[
-      {"id": "5c8963b7-3339-48df-b41c-a87a2975e6f3" || uuid(),
-      "First Name":'George',
-      "Last Name": 'Orwell'
-      }
-    ]
-  }
-]
+
+function getAll(){
+  let books = JSON.parse(fs.readFileSync(dbpath, format))
+  console.log(books)
+  return books
+}
+
 
 function getOne(id){
+  let books = JSON.parse(fs.readFileSync(dbpath, format))
   let find = books.find(function(ele){
     if (ele.id==id) return ele
   })
@@ -24,9 +22,9 @@ function getOne(id){
 
 function newBook(title, first, last){
   let book = {
-    'id': uuid(),
-    'Name': title,
-    'Borrowed':false,
+    "id": uuid(),
+    "Name": title,
+    "Borrowed":false,
     "Description":"",
     "Authors":[
       {"id":uuid(),
@@ -35,19 +33,24 @@ function newBook(title, first, last){
       }
     ]
   }
-  books.push(book)
+  let data = getAll()
+  data.push(book)
+  console.log(data)
+  fs.writeFileSync(dbpath, JSON.stringify(data), format)
   return book
 }
 
 function upDate(id, Description){
   let thisBook = getOne(id)
-  if (!thisBook) return fasle
+  //console.log(thisBook)
+  if (thisBook==false) return false
   let index = books.indexOf(thisBook)
+//  console.log(index);
   thisBook.Description = Description
-  books.splice(index, 1, thisBook)
+  //books.splice(index, 1, thisBook)
   return thisBook
 }
 
 
 
-module.exports = { books, getOne, newBook, upDate }
+module.exports = { getAll, getOne, newBook, upDate }

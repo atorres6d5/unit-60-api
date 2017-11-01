@@ -1,0 +1,13 @@
+[
+  { "id": "eaf70dcc-2bd4-4238-ad2e-1869d3817165",
+    "Name":"Nineteen Eighty-Four",
+    "Borrowed": false,
+    "Description": " a dystopian novel published in 1949",
+    "Authors":[
+      {"id": "5c8963b7-3339-48df-b41c-a87a2975e6f3",
+      "First Name":"George",
+      "Last Name": "Orwell"
+      }
+    ]
+  }
+]
