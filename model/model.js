@@ -6,7 +6,7 @@ const format = "utf-8"
 
 function getAll(){
   let books = JSON.parse(fs.readFileSync(dbpath, format))
-  console.log(books)
+  //console.log(books)
   return books
 }
 
@@ -16,6 +16,7 @@ function getOne(id){
   let find = books.find(function(ele){
     if (ele.id==id) return ele
   })
+  //console.log(find)
   return find
 }
 
@@ -35,7 +36,7 @@ function newBook(title, first, last){
   }
   let data = getAll()
   data.push(book)
-  console.log(data)
+  //console.log(data)
   fs.writeFileSync(dbpath, JSON.stringify(data), format)
   return book
 }
@@ -57,6 +58,7 @@ function lostBook(id){
   let allBooks = JSON.parse(fs.readFileSync(dbpath, format))
   let thisBook = getOne(id)
   let index = allBooks.indexOf(thisBook)
+  console.log(index)
   let gone = allBooks.splice(index, 1)
 
   fs.writeFileSync(dbpath, JSON.stringify(allBooks), format)
@@ -67,8 +69,31 @@ function lostBook(id){
 function getEveryone(id){
   let ourBook = getOne(id)
   if (ourBook==false) return false
-  return ourBook.Authors 
+  return ourBook.Authors
+}
+
+function newAuthors(id, body){
+  let newGuy={
+    "id":uuid(),
+    "First Name": body.first,
+    "Last Name": body.last
+  }
+  let data = getAll()
+  let book = getOne(id)
+  data = data.filter((book)=>book.id !== id)
+  //let index = data.indexOf(book)
+
+  // let authors = getEveryone(id)
+  book.Authors.push(newGuy)
+  data.push(book)
+  // book.Authors=authors
+
+  //data.splice(index, 1, book)
+
+  fs.writeFileSync(dbpath, JSON.stringify(data), format)
+
+  return book
 }
 
 
-module.exports = { getAll, getOne, newBook, upDate, lostBook, getEveryone}
+module.exports = { getAll, getOne, newBook, upDate, lostBook, getEveryone, newAuthors }

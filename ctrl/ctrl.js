@@ -46,8 +46,16 @@ function getEveryone(req, res, next){
   let Authors = model.getEveryone(id)
   if (!Authors) return next({status: 400, message: "needs a matching id"})
   return res.status(200).send({data: Authors})
-
   }
 
+function addAuthor(req, res, next){
+  let id = req.params.id
+  let body = req.body
+  let newAuthors = model.newAuthors(id, body)
+  //console.log(newAuthors)
+  if (!newAuthors) return next({status: 404, message: "need a matching id"})
+  return res.status(200).send({data: newAuthors})
+}
 
-module.exports = { getAll, getOne, makeBook, update, remove, getEveryone }
+
+module.exports = { getAll, getOne, makeBook, update, remove, getEveryone, addAuthor}
