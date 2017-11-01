@@ -3,7 +3,6 @@ const model = require('../model/model.js')
 
 function getAll(req, res, next) {
   let collection = model.getAll()
-  //console.log(collection)
   return res.status(200).send({
     data: collection
   })
@@ -38,7 +37,7 @@ function update(req, res, next) {
     status: 400,
     message: "please provide us with more information"
   })
-  //console.log(Description);
+
   let relevant = model.upDate(id, Description)
 
   //console.log(relevant);
@@ -80,7 +79,7 @@ function addAuthor(req, res, next) {
   let id = req.params.id
   let body = req.body
   let newAuthors = model.newAuthors(id, body)
-  //console.log(newAuthors)
+
   if (!newAuthors) return next({
     status: 404,
     message: "need a matching id"
