@@ -56,14 +56,13 @@ function upDate(id, Description){
 
 function lostBook(id){
   let allBooks = JSON.parse(fs.readFileSync(dbpath, format))
+  let start = allBooks.length
   let thisBook = getOne(id)
-  let index = allBooks.indexOf(thisBook)
-  console.log(index)
-  let gone = allBooks.splice(index, 1)
-
+  allBooks=allBooks.filter((book)=>book.id !== id)
+  let end= allBooks.length
   fs.writeFileSync(dbpath, JSON.stringify(allBooks), format)
-
-  return gone
+  if(start>end) return true
+  else{return false}
 }
 
 function getEveryone(id){
@@ -81,19 +80,33 @@ function newAuthors(id, body){
   let data = getAll()
   let book = getOne(id)
   data = data.filter((book)=>book.id !== id)
-  //let index = data.indexOf(book)
 
-  // let authors = getEveryone(id)
   book.Authors.push(newGuy)
   data.push(book)
-  // book.Authors=authors
-
-  //data.splice(index, 1, book)
 
   fs.writeFileSync(dbpath, JSON.stringify(data), format)
 
   return book
 }
 
+function removeAuthor(bookID, authorID){
+  let book = getOne(bookID)
+  let everyone = getEveryone(bookID)
+  lostBook(bookID)
+  let data = getAll()
+  let removed = everyone.filter(function(authors){
+    if (authors.id !== authorID) return authors
+  })
+  book.Authors = removed
+  lostBook(bookID)
+  data.push(book)
+  console.log(data)
 
-module.exports = { getAll, getOne, newBook, upDate, lostBook, getEveryone, newAuthors }
+  fs.writeFileSync(dbpath, JSON.stringify(data), format)
+
+  console.log(removed)
+  return true
+}
+
+
+module.exports = { getAll, getOne, newBook, upDate, lostBook, getEveryone, newAuthors, removeAuthor }

@@ -38,6 +38,7 @@ function remove(req, res, next){
   let id = req.params.id
   if(!id) return next({status: 400, message: "What book do you want to delete?"})
   let lostBook = model.lostBook(id)
+  if(lostBook) lostBook="Book Removed"
   return res.status(200).send({data:lostBook})
 }
 
@@ -57,5 +58,12 @@ function addAuthor(req, res, next){
   return res.status(200).send({data: newAuthors})
 }
 
+function removeAuthor(req, res, next){
+  let bookID = req.params.bookID
+  let autherID = req.params.authorID
+  let nix = model.removeAuthor(bookID, autherID)
+  if (!nix) next({status: 400, message: "did not delete you Author"})
+  if(nix) return res.status(200).send({message:"author removed from book"})
+}
 
-module.exports = { getAll, getOne, makeBook, update, remove, getEveryone, addAuthor}
+module.exports = { getAll, getOne, makeBook, update, remove, getEveryone, addAuthor, removeAuthor}
