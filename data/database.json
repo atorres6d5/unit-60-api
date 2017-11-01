@@ -18,4 +18,24 @@
     "First Name": "Orson",
     "Last Name": "Scott"
   }]
+}, {
+  "id": "f63eb478-b7f1-4654-bfe1-450ba79bbdd9",
+  "Name": "Harry Potter",
+  "Borrowed": false,
+  "Authors": [{
+    "id": "f416d756-94d0-4c8a-ab39-665e2c9392c2",
+    "First Name": "jk",
+    "Last Name": "rowling"
+  }],
+  "Description": "little boy becomes a wizard"
+}, {
+  "id": "8f031ed5-ba4d-4165-beaf-62f1e128fb96",
+  "Name": "Love In The Time Cholera",
+  "Borrowed": false,
+  "Description": "",
+  "Authors": [{
+    "id": "ec565b3b-c1c1-4270-baf5-21094fa1d5eb",
+    "First Name": "Juan",
+    "Last Name": "Marqez"
+  }]
 }]

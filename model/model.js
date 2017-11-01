@@ -64,5 +64,11 @@ function lostBook(id){
   return gone
 }
 
+function getEveryone(id){
+  let ourBook = getOne(id)
+  if (ourBook==false) return false
+  return ourBook.Authors 
+}
 
-module.exports = { getAll, getOne, newBook, upDate, lostBook }
+
+module.exports = { getAll, getOne, newBook, upDate, lostBook, getEveryone}

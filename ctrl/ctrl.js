@@ -35,13 +35,19 @@ function update(req, res, next){
 }
 
 function remove(req, res, next){
-  id = req.params.id
+  let id = req.params.id
   if(!id) return next({status: 400, message: "What book do you want to delete?"})
   let lostBook = model.lostBook(id)
   return res.status(200).send({data:lostBook})
 }
 
+function getEveryone(req, res, next){
+  let id = req.params.id
+  let Authors = model.getEveryone(id)
+  if (!Authors) return next({status: 400, message: "needs a matching id"})
+  return res.status(200).send({data: Authors})
+
+  }
 
 
-
-module.exports = {getAll, getOne, makeBook, update, remove}
+module.exports = { getAll, getOne, makeBook, update, remove, getEveryone }

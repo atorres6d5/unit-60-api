@@ -8,6 +8,7 @@ router.get('/:id', ctrl.getOne)
 router.post('/', ctrl.makeBook)
 router.put('/:id/about', ctrl.update)
 router.delete('/:id', ctrl.remove)
+router.get('/:id/authors', ctrl.getEveryone)
 
 
 
